@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  Lista wyników
+{% endblock %}
+
+{% block content %}
+<h2>Wyniki</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Próbka</th>
+      <th scope="col">Data analizy</th>
+      <th scope="col">Metoda</th>
+      <th scope="col">Wynik</th>
+      <th scope="col">Jednostka pomiaru</th>
+      <th scope="col">Użytkownik</th>
+      <th scope="col">Komentarz</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in results %}
+    <tr>
+      <td>{{ result.analysis.sample.name }}</td>
+      <td>{{ result.date_of_analysis }}</td>
+      <td>{{ result.method.name }}</td>
+      <td>{{ result.result }}</td>
+      <td>{{result.method.measurement_unit}}</td>
+      <td>{{ result.user }}</td>
+      <td>{{ result.comments }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block page_title %}
+  Szczegóły metody
+{% endblock %}
+
+{% block content %}
+<!-- Modify View -->
+<div class="card">
+  <div class="card-body">
+    <h2>Nazwa metody: {{ method.name }}</h2>
+    <p>Autor: {{method.author}}</p>
+    <p>Opis metody: {{ method.description }}</p>
+    <p>Wielkość mierzona: {{method.measurement_name}}</p>
+    <p>Jednostka pomiaru: {{method.measurement_unit}}</p>
+    <p>Procedura pomiarowa: {{method.procedure}}</p>
+    <p>Data utworzenia: {{method.realised_date}}</p>
+    <p>Data edycji: {{method.edition_date}}</p>
+
+
+    <p>
+      <a href="{%url 'modify-method' method_id=method.id %}">edytuj</a>
+      <a href="{% url 'delete-method' method_id=method.id %}">usuń</a>
+    </p>
+  </div>
+</div>
+<!-- Modify View -->
+{% endblock %}

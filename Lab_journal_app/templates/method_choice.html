@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  Wybierz metodę
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <form method ='post'>
+    {% csrf_token %}
+        <div class="form-group d-inline">
+            <label for="method"> Wybierz metodę z listy:</label>
+            <select name = "method" id ="method">
+            {% for method in methods %}
+                <option value="{{ method.id }}" > {{method.name}}</option>
+            {% endfor %}
+            </select>
+        </div>
+            <button type="submit" class="btn btn-primary">Wybierz</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista metod
+{%  endblock %}
+
+{% block content %}
+<!--method_list-->
+<table class="table">
+    <thead>
+        <tr class="d-flex">
+            <th scope="col" class="col-1">Nazwa metody analitycznej</th>
+            <th scope="col" class="col-1">Wielkość mierzona</th>
+            <th scope="col" class="col-1">Jednostka pomiaru</th>
+            <th scope="col" class="col-1">Data utworzenia</th>
+            <th scope="col" class="col-1">Data edycji</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for method in methods %}
+    <tr class="d-flex">
+      <td class="col-1">
+        <a href="{% url 'method-detail' method_id=method.id%}">{{ method.name }}</a>
+      </td>
+        <td class="col-1">{{ method.measurement_name }}</td>
+        <td class="col-1">{{ method.measurement_unit}}</td>
+        <td class="col-1">{{ method.realised_date}}</td>
+        <td class="col-1>">{{method.edition_date}}</td>
+        <td class="col-1">
+        <a href="{% url 'method-detail' method_id=method.id %}">szczegóły</a>
+      </td>
+      <td class="col-1">
+        <a href="{% url 'modify-method' method_id=method.id %}">edytuj</a>
+      </td>
+      <td class="col-1">
+        <a href="{% url 'delete-method' method_id=method.id %}">usuń</a>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

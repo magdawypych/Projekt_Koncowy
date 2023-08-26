@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+   Edytuj metodę
+{% endblock %}
+
+{% block content %}
+<!-- Modify method form -->
+<div class="card">
+  <div class="card-body">
+    <h2>Edytuj metodę analityczną</h2>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="method-name">Nazwa metody analitycznej</label>
+        <input type="text" class="form-control" id="method-name"  placeholder="Nazwa metody analitycznej" name="name" value = "{{method.name}}">
+      </div>
+      <div class="form-group">
+        <label for="description">Opis metody</label>
+        <input type="text" class="form-control" id="description"  placeholder="Opis metody" name="description" value = "{{method.description}}">
+      </div>
+      <div class="form-group">
+        <label for="measurement-name">Wynik Analizy</label>
+        <input type="text"  class="form-control" id="measurement-name" placeholder="Wynik analizy" name="measurement_name" value=" {{method.measurement_name}}">
+      </div>
+      <div class="form-group">
+        <label for="measurement-unit">Jednostka pomiaru</label>
+        <input type="text"  class="form-control" id="measurement-unit" placeholder="Jednostka pomiaru" name="measurement_unit" value="{{method.measurement_unit}} ">
+      </div>
+      <div class="form-group">
+        <label for = "procedure">Procedura pomiaru</label>
+        <textarea class="form-control" id ="procedure" placeholder="Opisz metodę"  name="procedure">{{method.procedure}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Edytuj</button>
+    </form>
+  </div>
+</div>
+<!-- Modify method form -->
+{% endblock %}

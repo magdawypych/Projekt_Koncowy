@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  Dodaj wynik
+{% endblock %}
+
+{% block content %}
+{{ methods }}
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="sample_id" value="{{ sample_id }}">
+  {% for method in methods %}
+  <h2>Metoda: {{ method.name }}</h2>
+  <input type="hidden" name="method_{{ method.id }}" value="{{ method.id }}">
+  <div class="form-group">
+    <label for="comment_{{ method.id }}">Uwagi:</label>
+    <textarea name="comment_{{ method.id }}" id="comment_{{ method.id }}" rows="4" cols="50"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="result_{{ method.id }}">{{ method.measurement_name }}:</label>
+    <input type="number" name="result_{{ method.id }}" id="result_{{ method.id }}" placeholder="{{ method.measurement_name }}">
+    <span>{{ method.measurement_unit }}</span>
+  </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Zapisz wyniki</button>
+</form>
+{% endblock %}
